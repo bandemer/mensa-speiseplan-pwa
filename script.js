@@ -13,7 +13,7 @@ function showSpeiseplan(tag)
     let html = '';
     if (spl[tag].length == 0) {
         html += '<article class="card">' +
-            '<p class="keine-angebote">Leider keine Angebote.</p></article>';
+            '<p class="keine-angebote">Leider keine Angebote an diesem Tag.</p></article>';
     }
     spl[tag].forEach(function (spld) {
         html += '<article class="card">' +
