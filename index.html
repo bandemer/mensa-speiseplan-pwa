@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Mensa Speiseplan PWA</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="picnic.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Speiseplan Mensa Matrix</h1>
+<div>
+    <button id="heute">Heute</button>
+    <button id="morgen">Morgen</button>
+</div>
+
+<div id="speiseplan"></div>
+<footer class="flex">
+    <div>
+        Made with <a href="https://picnicss.com">Picnic CSS</a> by <a href="https://bandemer.dev" title="Matthias Bandemer">bandemer.dev</a>
+    </div>
+    <div class="text-align-right">
+        Datenquelle: <a href="https://www.studentenwerk-dresden.de/mensen/speiseplan-api.html">Studentenwerk Dresden</a>
+    </div>
+</footer>
+<script src="script.js"></script>
+<script>
+window.addEventListener("load", async () => {
+    if ("serviceWorker" in window.navigator) {
+        try {
+            await window.navigator.serviceWorker.register("worker.js");
+        } catch (err) {
+            console.error(err);
+        }
+    }
+});
+</script>
+</body>
+</html>

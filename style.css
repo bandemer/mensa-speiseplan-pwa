@@ -1,0 +1,34 @@
+body {
+    background-color: #F0F0F0;
+    margin:2%;
+}
+h1 {
+    margin:0 0 .5rem 0;
+    padding:0;
+}
+h2 {
+    font-size: 1.08rem;
+}
+.card {
+    margin-top:.8rem;
+}
+.card strong {
+    display:inline-block;
+    margin:.5rem 0;
+}
+.card span {
+    padding-right:.8rem;
+}
+footer {
+    padding:.5rem 0 2rem 0;
+}
+footer div {
+    padding:.8rem !important;
+}
+.text-align-right {
+    text-align: right;
+}
+.keine-angebote {
+    text-align: center;
+    padding: 3rem !important;
+}
