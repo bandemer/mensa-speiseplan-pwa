@@ -6,6 +6,9 @@ spl['morgen'] = [];
 function setData(data, tag)
 {
     spl[tag] = data;
+    if (tag === 'heute') {
+        showSpeiseplan('heute');
+    }
 }
 
 function showSpeiseplan(tag)
@@ -42,5 +45,9 @@ fetch('https://api.studentenwerk-dresden.de/openmensa/v2/canteens/6/days/' +
     .then((response) => response.json())
     .then((data) => setData(data, 'morgen'));
 
-document.getElementById('heute').addEventListener('click', function() {showSpeiseplan('heute')});
-document.getElementById('morgen').addEventListener('click', function() {showSpeiseplan('morgen')});
+document.getElementById('heute').addEventListener('click', (event) => {showSpeiseplan('heute')});
+document.getElementById('morgen').addEventListener('click', (event) => {showSpeiseplan('morgen')});
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log(spl['heute'].length);
+});
