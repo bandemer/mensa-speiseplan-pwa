@@ -6,14 +6,16 @@
  * Cache Identifier
  * @type {string}
  */
-const CACHE_ID = "test-v18";
+const CACHE_ID = "test-v19";
 
 /**
  * Files to cache
  * @type {string[]}
  */
 const paths = [
-    ".", "manifest.json", "img/icon192.png", "img/icon512.png", "script.js", "picnic.min.css", "style.css"
+    ".", "manifest.json", "script.js", "picnic.min.css", "style.css",
+    "img/icon48.png", "img/icon72.png", "img/icon96.png", "img/icon144.png",
+    "img/icon168.png", "img/icon192.png",  "img/icon512.png"
 ];
 
 /**
@@ -28,7 +30,7 @@ self.addEventListener("install",
     (evt) => evt.waitUntil(handleInstall()) );
 
 /**
- * Service worker is redady
+ * Service worker is ready
  */
 self.addEventListener("activate",
     () => console.log("Service worker active and ready") );

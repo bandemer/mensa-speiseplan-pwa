@@ -47,7 +47,3 @@ fetch('https://api.studentenwerk-dresden.de/openmensa/v2/canteens/6/days/' +
 
 document.getElementById('heute').addEventListener('click', (event) => {showSpeiseplan('heute')});
 document.getElementById('morgen').addEventListener('click', (event) => {showSpeiseplan('morgen')});
-
-window.addEventListener('DOMContentLoaded', (event) => {
-    console.log(spl['heute'].length);
-});
