@@ -1,7 +1,7 @@
 # Mensa Speiseplan PWA
+***
+Progressive Wep App zur Anzeige von Mensa Speiseplänen
 
-Progressive Wep App zur Anzeige des Speiseplans der Mensa Matrix
+Demo unter: https://speiseplan.bandemer.dev
 
-Demo-Anwendung für die Speiseplan-API des Studentenwerks Dresden
-
-https://www.studentenwerk-dresden.de/mensen/speiseplan-api.html
+Made with Picnic CSS von [Matthias Bandemer](https://bandemer.dev)
