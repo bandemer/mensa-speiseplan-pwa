@@ -10,21 +10,43 @@
 </head>
 <body>
 <header>
-    <h1>Speiseplan Mensa Matrix</h1>
+    <h1 id="spltitle">Speiseplan</h1>
 </header>
 <div>
     <button id="heute">Heute</button>
     <button id="morgen">Morgen</button>
+    <label for="modal_1" class="button">Mensa wählen</label>
 </div>
 <main id="speiseplan"></main>
 <footer class="flex">
     <div>
-        Made with <a href="https://picnicss.com">Picnic CSS</a> by <a href="https://bandemer.dev">Matthias Bandemer</a>
+        Made by <a href="https://bandemer.dev" title="Matthias Bandemer">bandemer.dev</a>
     </div>
     <div class="text-align-right">
         Datenquelle: <a href="https://www.studentenwerk-dresden.de/mensen/speiseplan-api.html">Studentenwerk Dresden</a>
     </div>
 </footer>
+
+<div class="modal">
+    <input id="modal_1" type="checkbox">
+    <label for="modal_1" class="overlay"></label>
+    <article>
+        <header>
+            <h3>Mensa wählen:</h3>
+            <label for="modal_1" class="close">&times;</label>
+        </header>
+        <section class="content">
+            <select id="mensenselect"></select>
+        </section>
+        <footer>
+            <button class="button" id="savemensa">Speichern</button>
+            <label for="modal_1" class="button">
+                Abbrechen
+            </label>
+        </footer>
+    </article>
+</div>
+
 <script src="script.js"></script>
 <script>
 window.addEventListener("load", async () => {
