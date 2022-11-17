@@ -3,6 +3,23 @@ let spl = [];
 spl['heute'] = [];
 spl['morgen'] = [];
 
+function formatPrice(price)
+{
+    price = "" + price;
+    let rs = "";
+    let p = price.split(".");
+    if (p.length == 1) {
+        rs = p[0]+',00';
+    } else {
+        if (p[1].length == 1) {
+            rs = p[0] + ',' + p[1] + '0';
+        } else {
+            rs = p[0] + ',' + p[1];
+        }
+    }
+    return rs;
+}
+
 function setData(data, tag)
 {
     spl[tag] = data;
@@ -19,14 +36,16 @@ function showSpeiseplan(tag)
             '<p class="keine-angebote">Leider keine Angebote an diesem Tag.</p></article>';
     }
     spl[tag].forEach(function (spld) {
+
         html += '<article class="card">' +
             '<header><h2>' + spld.category + '</h2></header>' +
+            '<img src="' + spld.image + '" alt="Foto des Angebots" class="splimg">' +
             '<p>' + spld.name + '<br><strong>';
         if (spld.prices.Studierende !== undefined) {
-            html += '<span>Studierende: ' + spld.prices.Studierende + ' € </span>';
+            html += '<span>Stud.: ' + formatPrice(spld.prices.Studierende) + ' € </span>';
         }
         if (spld.prices.Bedienstete !== undefined) {
-            html += '<span>Bedienstete: ' + spld.prices.Bedienstete + ' €</span>';
+            html += '<span>Bed.: ' + formatPrice(spld.prices.Bedienstete) + ' €</span>';
         }
         html += '</strong></p></article>';
     });

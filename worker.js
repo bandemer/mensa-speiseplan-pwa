@@ -6,7 +6,7 @@
  * Cache Identifier
  * @type {string}
  */
-const CACHE_ID = "test-v20";
+const CACHE_ID = "test-v21";
 
 /**
  * Files to cache
