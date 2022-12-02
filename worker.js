@@ -42,7 +42,8 @@ self.addEventListener("activate",
  */
 const handleFetch = async (evt) => {
     if (evt.request.url.startsWith('https://api.studentenwerk-dresden.de')
-        || evt.request.url.startsWith('https://bilderspeiseplan.studentenwerk-dresden.de')) {
+        || evt.request.url.startsWith('https://bilderspeiseplan.studentenwerk-dresden.de')
+        || evt.request.url.startsWith('https://static.studentenwerk-dresden.de')) {
         return await fetch(evt.request);
     }
     const cache = await caches.open(CACHE_ID);
