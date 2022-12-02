@@ -41,7 +41,8 @@ self.addEventListener("activate",
  * @returns {Promise<Response|undefined>}
  */
 const handleFetch = async (evt) => {
-    if (evt.request.url.startsWith('https://api.studentenwerk-dresden.de')) {
+    if (evt.request.url.startsWith('https://api.studentenwerk-dresden.de')
+        || evt.request.url.startsWith('https://bilderspeiseplan.studentenwerk-dresden.de')) {
         return await fetch(evt.request);
     }
     const cache = await caches.open(CACHE_ID);
