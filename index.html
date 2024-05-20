@@ -2,27 +2,30 @@
 <html lang="de">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mensa Speiseplan PWA</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="picnic.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <h1 id="spltitle">Speiseplan</h1>
-</header>
+	<div class="container">
+		
+	
+	<header>
+    	<h1 id="spltitle">Speiseplan</h1>
+	</header>
 <div>
-    <button id="heute">Heute</button>
-    <button id="morgen">Morgen</button>
-    <label for="modalMensaAuswahl" class="button">Mensa wählen</label>
+    <button class="btn btn-primary" id="heute">Heute</button>
+    <button class="btn btn-primary" id="morgen">Morgen</button>
+    <button class="btn btn-light border" id="showMensaModal">Mensa wählen</button>
 </div>
-<main id="speiseplan">
+<main class="row" id="speiseplan">
 
-    <article class="card"><p class="keine-angebote">Bitte wähle zuerst eine Mensa!</p></article>
+    <p class="keine-angebote">Bitte wähle zuerst eine Mensa!</p>
 
 </main>
-<footer class="flex">
+<footer>
     <div>
         Made by <a href="https://bandemer.dev" title="Matthias Bandemer">bandemer.dev</a>
     </div>
@@ -31,28 +34,33 @@
     </div>
 </footer>
 
-<div class="modal">
-    <input id="modalMensaAuswahl" type="checkbox">
-    <label for="modalMensaAuswahl" class="overlay"></label>
-    <article>
-        <header>
-            <h3>Mensa wählen:</h3>
-            <label for="modalMensaAuswahl" class="close">&times;</label>
-        </header>
-        <section class="content">
-            <select id="mensenselect"></select>
-        </section>
-        <footer>
-            <button class="button" id="savemensa">Speichern</button>
-            <label for="modalMensaAuswahl" class="button">
-                Abbrechen
-            </label>
-        </footer>
-    </article>
+<div class="modal" id="mensaSelectModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Mensa wählen:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<form>
+	<select id="mensenselect" class="form-select"></select>
+</form>                    
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="savemensa" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 <script>
+	fetchMensen(9);
+/*	
 window.addEventListener("load", async () => {
     if ("serviceWorker" in window.navigator) {
         try {
@@ -62,6 +70,7 @@ window.addEventListener("load", async () => {
         }
     }
 });
+*/
 </script>
 </body>
 </html>

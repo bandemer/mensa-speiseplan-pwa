@@ -6,14 +6,14 @@
  * Cache Identifier
  * @type {string}
  */
-const CACHE_ID = "test-v22";
+const CACHE_ID = "test-v23";
 
 /**
  * Files to cache
  * @type {string[]}
  */
 const paths = [
-    ".", "manifest.json", "script.js", "picnic.min.css", "style.css",
+    ".", "manifest.json", "script.js", "style.css",
     "img/icon48.png", "img/icon72.png", "img/icon96.png", "img/icon144.png",
     "img/icon168.png", "img/icon192.png",  "img/icon512.png"
 ];

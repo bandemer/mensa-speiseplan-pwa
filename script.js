@@ -4,6 +4,10 @@ let spl = [];
 spl['heute'] = [];
 spl['morgen'] = [];
 
+const mensaModal = new bootstrap.Modal('#mensaSelectModal', {
+  keyboard: false
+});
+
 function formatPrice(price) {
     price = "" + price;
     let rs = "";
@@ -36,24 +40,24 @@ function showSpeiseplan(tag) {
     }
     spl[tag].forEach(function (spld) {
 
-        html += '<article class="card">' +
-            '<header><h2>' + spld.category + '</h2></header>' +
-            '<img src="' + spld.image + '" alt="Foto des Angebots" class="splimg">' +
-            '<p>' + spld.name + '<br><strong>';
+        html += '<div class="card">' +
+            //'<header><h2>' + spld.category + '</h2></header>' +
+            '<img src="' + spld.image + '" alt="Foto des Angebots" class="card-img-top">' +
+            '<div class="card-body"><p class="card-text">' + spld.name + '<br><strong>';
         if (spld.prices.Studierende !== undefined) {
             html += '<span>Stud.: ' + formatPrice(spld.prices.Studierende) + ' € </span>';
         }
         if (spld.prices.Bedienstete !== undefined) {
             html += '<span>Bed.: ' + formatPrice(spld.prices.Bedienstete) + ' €</span>';
         }
-        html += '</strong></p></article>';
+        html += '</strong></p></div></div>';
     });
     document.getElementById('speiseplan').innerHTML = html;
 }
 
 //Speiseplan einer Mensa von heute und morgen abfragen
 function fetchData(mensaid) {
-    let tag = new Date();
+	let tag = new Date();
     fetch('https://api.studentenwerk-dresden.de/openmensa/v2/canteens/' +
         mensaid + '/days/' + tag.toISOString().substr(0, 10) + '/meals')
         .then((response) => response.json())
@@ -87,6 +91,7 @@ function fetchMensen(mId) {
 //Speiseplan Buttons
 document.getElementById('heute').addEventListener('click', (event) => {showSpeiseplan('heute')});
 document.getElementById('morgen').addEventListener('click', (event) => {showSpeiseplan('morgen')});
+document.getElementById('showMensaModal').addEventListener('click', (event) => {mensaModal.show()});
 
 //Mensa gewählt
 document.getElementById('savemensa').addEventListener('click', (event) => {
@@ -97,21 +102,12 @@ document.getElementById('savemensa').addEventListener('click', (event) => {
         document.cookie = 'mensaid=' + mensaId + ';path=/;SameSite=Lax;expires=' + expire.toUTCString();
         document.getElementById('spltitle').innerText = 'Speiseplan ' + sel.options[sel.selectedIndex].text;
         fetchData(mensaId);
-        document.getElementById('modalMensaAuswahl').checked = false;
+   		mensaModal.hide();
     }
 });
 
-//Escape-Taste schließt Mensa-Auswahl-Modal
-window.addEventListener("keydown", (event) => {
-    if (event.key == 'Escape') {
-        let mods = document.querySelectorAll('.modal > [type=checkbox]');
-        [].forEach.call(mods, function(mod){ mod.checked = false; });
-    }
-}, true);
-
-//Wenn Seite geladen, fängst los
+//Wenn Seite geladen, gehts los
 addEventListener('DOMContentLoaded', (event) => {
-
 
     const cookieId = document.cookie
         .split('; ')
