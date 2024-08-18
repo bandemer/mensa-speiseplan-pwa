@@ -15,6 +15,7 @@
 <div>
     <button id="heute">Heute</button>
     <button id="morgen">Morgen</button>
+    <label for="modalDatumAuswahl" class="button">Datum wählen</label>
     <label for="modalMensaAuswahl" class="button">Mensa wählen</label>
 </div>
 <main id="speiseplan">
@@ -45,6 +46,26 @@
         <footer>
             <button class="button" id="savemensa">Speichern</button>
             <label for="modalMensaAuswahl" class="button">
+                Abbrechen
+            </label>
+        </footer>
+    </article>
+</div>
+
+<div class="modal">
+    <input id="modalDatumAuswahl" type="checkbox">
+    <label for="modalDatumAuswahl" class="overlay"></label>
+    <article>
+        <header>
+            <h3>Datum wählen:</h3>
+            <label for="modalDatumAuswahl" class="close">&times;</label>
+        </header>
+        <section class="content">
+            <select id="datumselect"></select>
+        </section>
+        <footer>
+            <button class="button" id="savedatum">Speichern</button>
+            <label for="modalDatumAuswahl" class="button">
                 Abbrechen
             </label>
         </footer>
